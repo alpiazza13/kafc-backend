@@ -4,8 +4,9 @@ Ruby Version: 2.4.5
 ## Setup
 1. Clone the Repository: `git clone https://git@github.com:cpiazza/kafc-backend.git`
 2. Change into the project folder `cd kafc-backend`
-2. Install the required gems: `bundle install`
-3. Create the database `rake db:create`
+3. Install the required gems: `bundle install`
+4. Create the database `rake db:create`
+5. Run Migrations `rake db:migrate`
 
 ## Creating Models
 Using the rails generator will create the database migration, the model class, and an empty test (spec) file. 
