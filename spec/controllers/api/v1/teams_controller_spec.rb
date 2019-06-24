@@ -11,7 +11,6 @@ describe Api::V1::TeamsController do
       expect(response.status).to eq 200
 
       returned_teams = JSON.parse(response.body)
-      # binding.pry
       expect(returned_teams['teams'].count).to eq teams.count
       expect(returned_teams['teams'][1]['color']).to eq teams[1].color
     end
