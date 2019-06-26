@@ -11,10 +11,10 @@ namespace :kafc do
         20.times do |i|
             Player.find_or_create_by(
                 first_name: "Alvin",
-                last_name: "Bakyoko#{i}000",
+                last_name: "Bakayoko#{i}000",
                 age: i+20
             )
-        end 
+        end
         20.times do |i|
             Team.find_or_create_by(
             name: "#{i}Chelsea#{i}",

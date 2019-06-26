@@ -1,1 +1,1 @@
-json.players @players, :id, :first_name, :last_name
+json.players @players, :id, :first_name, :last_name, :age
