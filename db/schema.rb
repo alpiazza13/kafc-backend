@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_06_26_051829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "team_id"
+
   end
 
   create_table "stats", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_06_26_051829) do
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
   create_table "teams", force: :cascade do |t|
