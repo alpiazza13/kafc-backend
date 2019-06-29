@@ -4,7 +4,7 @@ describe Api::V1::PositionsController do
   render_views
 
   describe 'GET index' do
-    let! (:positions) { Fabricate.times(3, :user) }
+    let! (:positions) { Fabricate.times(3, :position) }
 
     it 'returns json serialized positions' do
       get :index, format: :json
