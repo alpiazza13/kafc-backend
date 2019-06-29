@@ -6,7 +6,7 @@ describe Api::V1::PositionsController do
   describe 'GET index' do
     let! (:positions) { Fabricate.times(3, :user) }
 
-    it 'returns json serialized users' do
+    it 'returns json serialized positions' do
       get :index, format: :json
       expect(response.status).to eq 200
 
