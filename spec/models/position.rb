@@ -9,13 +9,14 @@ RSpec.describe Position, type: :model do
 
   describe 'validation' do
     it 'requires a player_position' do
-      stat = Position.new
-      expect(position.valid?).to be false
+      new_position = Position.new
+      expect(new_position.valid?).to be false
 
-      position.player_position = 'defender'
+      new_position.player_position = 'Defender'
       #expect(position.valid?).to be false
 
-      expect(stat.valid?).to be true      
+      expect(new_position.valid?).to be true      
     end
   end
+
 end
