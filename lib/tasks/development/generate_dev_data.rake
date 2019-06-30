@@ -44,16 +44,16 @@ namespace :kafc do
                 home_team_id: Team.all.ids[i],
                 away_team_id: wes.id,
                 matchweek: i + 1,
-                date: Time.now
+                date:  "2019-06-29 20:42:07 -0400"
             )
         end
 
         pos1 = Position.find_or_create_by(name: "GK")
-        pos1 = Position.find_or_create_by(name: "DEF")
-        pos1 = Position.find_or_create_by(name: "MID")
-        pos1 = Position.find_or_create_by(name: "FWD")
-        pos1 = Position.find_or_create_by(name: "DEF/MID")
-        pos1 = Position.find_or_create_by(name: "MID/FWD")
+        pos2 = Position.find_or_create_by(name: "DEF")
+        pos3 = Position.find_or_create_by(name: "MID")
+        pos4 = Position.find_or_create_by(name: "FWD")
+        pos5 = Position.find_or_create_by(name: "DEF/MID")
+        pos6 = Position.find_or_create_by(name: "MID/FWD")
 
 
 
