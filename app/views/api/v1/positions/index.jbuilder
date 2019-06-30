@@ -1,1 +1,1 @@
-json.positions @positions, :id, :player_position
+json.positions @positions, :id, :name
