@@ -22,6 +22,11 @@ namespace :kafc do
             )
         end
 
+        wes = Team.find_or_create_by(
+            name: "Losers",
+            color: "Red"
+        )
+
         stat = Stat.find_or_create_by(stat_name: 'Goal')
         stat.update_attribute(:points, 5)
 
@@ -33,6 +38,24 @@ namespace :kafc do
 
         stat3 = Stat.find_or_create_by(stat_name: 'Yellow Card')
         stat3.update_attribute(:points, -5)
+
+        20.times do |i|
+            Match.find_or_create_by(
+                home_team_id: Team.all.ids[i],
+                away_team_id: wes.id,
+                matchweek: i + 1,
+                date:  "2019-06-29 20:42:07 -0400"
+            )
+        end
+
+        pos1 = Position.find_or_create_by(name: "GK")
+        pos2 = Position.find_or_create_by(name: "DEF")
+        pos3 = Position.find_or_create_by(name: "MID")
+        pos4 = Position.find_or_create_by(name: "FWD")
+        pos5 = Position.find_or_create_by(name: "DEF/MID")
+        pos6 = Position.find_or_create_by(name: "MID/FWD")
+
+
 
     end
 end
