@@ -12,7 +12,7 @@ RSpec.describe Position, type: :model do
       new_position = Position.new
       expect(new_position.valid?).to be false
 
-      new_position.player_position = 'Defender'
+      new_position.name = 'Defender'
       #expect(position.valid?).to be false
 
       expect(new_position.valid?).to be true      
