@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2019_06_29_234234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "home_team_id"
+    t.integer "away_team_id"
+    t.integer "matchweek"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
