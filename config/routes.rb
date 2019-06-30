@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :players, only: [:index]
       resources :stats, only: [:index]
       resources :positions, only: [:index]
+      resources :matches, only: [:index]  
     end
   end
 end
