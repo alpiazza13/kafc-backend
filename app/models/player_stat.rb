@@ -4,6 +4,6 @@ class PlayerStat < ApplicationRecord
     validates :match_id, presence: true
     belongs_to :player
     belongs_to :stat
-    belongs_to :team
+    belongs_to :match
 end
 
