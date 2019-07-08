@@ -5,5 +5,9 @@ class Match < ApplicationRecord
     validates :home_team, presence: true
     validates :away_team, presence: true
 
-    
+    # has_many :player_stats
+    # has_many :players, through: :player_stats
+    # has_many :stats, through: :player_stats
+
+
 end
