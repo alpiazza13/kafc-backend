@@ -4,7 +4,7 @@ class Player < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
 
-    # has_many :player_stats
-    # has_many :matches, through: :player_stats
-    # has_many :stats, through: :player_stats
+    has_many :player_stats
+    has_many :matches, through: :player_stats
+    has_many :stats, through: :player_stats
 end
