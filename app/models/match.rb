@@ -9,5 +9,19 @@ class Match < ApplicationRecord
     has_many :players, through: :player_stats
     has_many :stats, through: :player_stats
 
+    def all_goals
+        goal_id = Stat.where("stat_name = ?", "Goal").ids[0]
+        PlayerStat.where("stat_id = ? and match_id = ?", goal_id, id)
+    end
+
+    def home_team_score
+        goals = self.all_goals
+        goals.select {|goal| goal.team.id == self.home_team_id}.size
+    end
+
+    def away_team_score
+        goals = self.all_goals
+        goals.select {|goal| goal.team.id == self.away_team_id}.size
+    end
 
 end
