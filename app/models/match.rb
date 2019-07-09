@@ -24,4 +24,8 @@ class Match < ApplicationRecord
         goals.select {|goal| goal.team.id == self.away_team_id}.size
     end
 
+    def score
+        "#{self.home_team.name} : #{self.home_team_score} vs #{self.away_team.name} : #{self.away_team_score}"
+    end
+
 end
