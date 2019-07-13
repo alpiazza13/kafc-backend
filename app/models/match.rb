@@ -28,4 +28,14 @@ class Match < ApplicationRecord
         "#{self.home_team.name} : #{self.home_team_score} vs #{self.away_team.name} : #{self.away_team_score}"
     end
 
+    def winner
+        if self.home_team_score > self.away_team_score
+            "#{self.home_team.name} wins!!!"
+        elsif self.home_team_score < self.away_team_score
+            "#{self.away_team.name} wins!!!"
+        else
+            "It's a draw!"
+        end
+    end
+
 end

@@ -26,7 +26,7 @@ namespace :kafc do
                 first_name: "Alvin",
                 last_name: "Bakayoko#{i}000",
                 age: i+20,
-                team_id: Team.last.id
+                team_id: Team.all[i].id
             )
         end
 
@@ -61,9 +61,12 @@ namespace :kafc do
         20.times do |i| PlayerStat.find_or_create_by(
             player_id: Player.all.ids[i],
             stat_id: Stat.first.id,
-            match_id: Match.first.id
+            match_id: Match.all[i].id
         )
     end
+
+#We have 20 fake matches, eacch ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
+# Each team only has one player (one of the Bakayoko's)
 
 
 
