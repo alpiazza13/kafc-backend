@@ -1,4 +1,4 @@
-class PlayerScoring::Service
+class Scoring::PlayerSvc
 
     #calculates the points earned by player in match
     def self.call(player, match)
