@@ -65,7 +65,7 @@ namespace :kafc do
         )
     end
 
-#We have 20 fake matches, eacch ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
+#We have 20 fake matches, each ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
 # Each team only has one player (one of the Bakayoko's)
 
 
