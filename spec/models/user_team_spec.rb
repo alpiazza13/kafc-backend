@@ -1,5 +1,24 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe UserTeam, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+    describe 'model structure' do
+      it 'has its columns' do
+        expect(UserTeam.column_names.include?('user_id')).to be true
+        expect(UserTeam.column_names.include?('team_id')).to be true
+
+        end
+    end
+
+    describe 'validation' do
+      it 'requires a team and user' do
+        new_team = UserTeam.new
+        expect(new_team.valid?).to be false
+
+        new_team.user_id = 1
+        expect(new_team.valid?).to be false
+
+        new_team.team_id = 2
+        expect(new_team.valid?).to be true
+      end
+    end
 end
