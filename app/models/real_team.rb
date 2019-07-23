@@ -1,0 +1,2 @@
+class RealTeam < Team
+end
