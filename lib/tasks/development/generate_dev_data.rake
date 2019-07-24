@@ -10,13 +10,13 @@ namespace :kafc do
         end
 
         20.times do |i|
-            Team.find_or_create_by(
+            RealTeam.find_or_create_by(
             name: "#{i}Chelsea#{i}",
             color: "ShadeOfBlue"
             )
         end
 
-        wes = Team.find_or_create_by(
+        wes = RealTeam.find_or_create_by(
             name: "Losers",
             color: "Red"
         )
@@ -44,7 +44,7 @@ namespace :kafc do
 
         20.times do |i|
             Match.find_or_create_by(
-                home_team_id: Team.all.ids[i],
+                home_team_id: RealTeam.all.ids[i],
                 away_team_id: wes.id,
                 matchweek: i + 1,
                 date:  "2019-06-29 20:42:07 -0400"
@@ -65,8 +65,27 @@ namespace :kafc do
         )
     end
 
+        20.times do |i| FantasyTeam.find_or_create_by(
+            name: "MyTeam#{i}",
+            color: "Why is this a category?"
+        )
+    end
+
+        20.times do |i| UserTeam.find_or_create_by(
+            user_id: User.all[i].id,
+            team_id: FantasyTeam.all[i].id
+        )
+    end
+
+        20.times do |i| FantasyTeamPlayer.find_or_create_by(
+            player_id: Player.all[i].id,
+            user_team_id: UserTeam.all[i].id
+        )
+    end
+
 #We have 20 fake matches, each ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
 # Each team only has one player (one of the Bakayoko's)
+# 21 real teams, 20 fantasy teams, each fantasy team has one player
 
 
 
