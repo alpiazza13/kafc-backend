@@ -5,5 +5,9 @@ class PlayerStat < ApplicationRecord
     belongs_to :player
     belongs_to :stat
     belongs_to :match
-end
 
+    def team
+        self.player.team
+    end
+
+end
