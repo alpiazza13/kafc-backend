@@ -3,6 +3,6 @@ class UserTeam < ApplicationRecord
     validates :team_id, presence: true
 
     belongs_to :user, optional: true
-    belongs_to :team, optional: true
+    belongs_to :team
     has_many :fantasy_team_players
 end
