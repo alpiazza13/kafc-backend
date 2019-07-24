@@ -6,6 +6,8 @@ RSpec.describe Team, type: :model do
         expect(Team.column_names.include?('name')).to be true
         expect(Team.column_names.include?('color')).to be true
         expect(Team.column_names.include?('id')).to be true
+        expect(Team.column_names.include?('type')).to be true
+
       end
     end
 
