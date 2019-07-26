@@ -26,7 +26,8 @@ namespace :kafc do
                 first_name: "Alvin",
                 last_name: "Bakayoko#{i}000",
                 age: i+20,
-                team_id: Team.all[i].id
+                team_id: Team.all[i].id,
+                position_id: Position.all[2].id
             )
         end
 

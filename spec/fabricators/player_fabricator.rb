@@ -3,4 +3,5 @@ Fabricator(:player) do
     last_name { Faker::Name.last_name.sub("'", '') }
     age { Faker::Number.between(from=15,to=50) }
     team { Fabricate(:team) }
+    position_id 1
   end
