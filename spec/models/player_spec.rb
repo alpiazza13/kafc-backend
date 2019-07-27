@@ -7,6 +7,7 @@ RSpec.describe Player, type: :model do
       expect(Player.column_names.include?('last_name')).to be true
       expect(Player.column_names.include?('age')).to be true
       expect(Player.column_names.include?('team_id')).to be true
+      expect(Player.column_names.include?('position_id')).to be true 
     end
   end
 

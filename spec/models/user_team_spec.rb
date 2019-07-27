@@ -14,10 +14,12 @@ RSpec.describe UserTeam, type: :model do
         new_team = UserTeam.new
         expect(new_team.valid?).to be false
 
-        new_team.user_id = 1
+        team = Fabricate(:fantasy_team)
+
+        new_team.user_id = team.type
         expect(new_team.valid?).to be false
 
-        new_team.team_id = 2
+        new_team.team_id = team.id
         expect(new_team.valid?).to be true
       end
     end

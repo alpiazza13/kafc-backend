@@ -11,8 +11,8 @@ RSpec.describe Match, type: :model do
   end
 
   describe 'validation' do
-      let(:home_team) { Fabricate(:team) }
-      let(:away_team) { Fabricate(:team) }
+      let(:home_team) { Fabricate(:real_team) }
+      let(:away_team) { Fabricate(:real_team) }
 
       it 'requires an away team' do
           new_match = Match.new

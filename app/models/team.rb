@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
     validates :name, presence: true
+    validates :type, presence: true, inclusion: { in: %w[FantasyTeam RealTeam] }
     has_many :players
 
     def matches
