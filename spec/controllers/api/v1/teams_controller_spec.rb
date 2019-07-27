@@ -4,7 +4,7 @@ describe Api::V1::TeamsController do
   render_views
 
   describe 'GET index' do
-    let! (:teams) { Fabricate.times(3, :team) }
+    let! (:teams) { Fabricate.times(3, :real_team) }
 
     it 'returns json serialized teams' do
       get :index, format: :json
