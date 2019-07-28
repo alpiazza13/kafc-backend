@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_07_28_042421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "team_id"
+    t.string "position"
+    t.string "string"
     t.integer "position_id"
   end
 
