@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  root to: 'dashboard#index'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users, only: [:index]
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
       resources :players, only: [:index]
       resources :stats, only: [:index]
       resources :positions, only: [:index]
-      resources :matches, only: [:index]  
+      resources :matches, only: [:index]
     end
   end
 end
