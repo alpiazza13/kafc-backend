@@ -10,12 +10,16 @@ RSpec.describe User, type: :model do
   end
 
   describe 'validation' do
-    it 'requires an email' do
+    it 'requires an email and password' do
       user = User.new
       expect(user.valid?).to be false
 
       user.email = 'a@b.com'
+      expect(user.valid?).to be false
+
+      user.password = 'alexthegreat'
       expect(user.valid?).to be true
+
     end
   end
 end
