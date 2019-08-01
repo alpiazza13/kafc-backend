@@ -21,6 +21,13 @@ namespace :kafc do
             color: "Red"
         )
 
+        pos1 = Position.find_or_create_by(name: "GK")
+        pos2 = Position.find_or_create_by(name: "DEF")
+        pos3 = Position.find_or_create_by(name: "MID")
+        pos4 = Position.find_or_create_by(name: "FWD")
+        pos5 = Position.find_or_create_by(name: "DEF/MID")
+        pos6 = Position.find_or_create_by(name: "MID/FWD")
+
         20.times do |i|
             Player.find_or_create_by(
                 first_name: "Alvin",
@@ -52,12 +59,7 @@ namespace :kafc do
             )
         end
 
-        pos1 = Position.find_or_create_by(name: "GK")
-        pos2 = Position.find_or_create_by(name: "DEF")
-        pos3 = Position.find_or_create_by(name: "MID")
-        pos4 = Position.find_or_create_by(name: "FWD")
-        pos5 = Position.find_or_create_by(name: "DEF/MID")
-        pos6 = Position.find_or_create_by(name: "MID/FWD")
+
 
         20.times do |i| PlayerStat.find_or_create_by(
             player_id: Player.all.ids[i],
