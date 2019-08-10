@@ -1,7 +1,7 @@
 namespace :kafc do
     desc 'generates development data'
     task generate_dev_data: :environment do
-
+ 
         pos1 = Position.find_or_create_by(name: "GK")
         pos2 = Position.find_or_create_by(name: "DEF")
         pos3 = Position.find_or_create_by(name: "MID")
@@ -40,6 +40,7 @@ namespace :kafc do
             color: "Red"
         )
 
+
         20.times do |i|
             Player.find_or_create_by(
                 first_name: "Alvin",
@@ -65,7 +66,7 @@ namespace :kafc do
             stat_id: Stat.first.id,
             match_id: Match.all[i].id
         )
-    end
+        end
 
         5.times do |i| League.find_or_create_by(
             name: "MyLeague#{i}",
