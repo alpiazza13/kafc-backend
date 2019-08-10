@@ -5,6 +5,7 @@ describe Api::V1::MatchesController do
 
     describe 'GET index' do
         let! (:matches) { Fabricate.times(3, :match) }
+        let! (:user) { Fabricate(:user) }
 
         it 'returns json serialized matches' do
             get :index, format: :json

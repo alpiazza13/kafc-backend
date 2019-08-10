@@ -1,12 +1,12 @@
 namespace :kafc do
     desc 'generates development data'
     task generate_dev_data: :environment do
+
         20.times do |i|
-            User.find_or_create_by(
-                email: "test-email#{i}@test.com",
-                first_name: "Kurt",
-                last_name: "Zouma#{i}000"
-            )
+            email = "test-email#{i}@test.com"
+            user = User.find_by(email: email)
+            next if user.present? # if user.present, then next, else...
+            Fabricate(:user, email: email, first_name: 'Kurt', last_name: "Zouma#{i}000")
         end
 
         20.times do |i|
@@ -20,6 +20,13 @@ namespace :kafc do
             name: "Losers",
             color: "Red"
         )
+
+        pos1 = Position.find_or_create_by(name: "GK")
+        pos2 = Position.find_or_create_by(name: "DEF")
+        pos3 = Position.find_or_create_by(name: "MID")
+        pos4 = Position.find_or_create_by(name: "FWD")
+        pos5 = Position.find_or_create_by(name: "DEF/MID")
+        pos6 = Position.find_or_create_by(name: "MID/FWD")
 
         20.times do |i|
             Player.find_or_create_by(
@@ -52,19 +59,12 @@ namespace :kafc do
             )
         end
 
-        pos1 = Position.find_or_create_by(name: "GK")
-        pos2 = Position.find_or_create_by(name: "DEF")
-        pos3 = Position.find_or_create_by(name: "MID")
-        pos4 = Position.find_or_create_by(name: "FWD")
-        pos5 = Position.find_or_create_by(name: "DEF/MID")
-        pos6 = Position.find_or_create_by(name: "MID/FWD")
-
         20.times do |i| PlayerStat.find_or_create_by(
             player_id: Player.all.ids[i],
             stat_id: Stat.first.id,
             match_id: Match.all[i].id
         )
-    end
+        end
 
         20.times do |i| FantasyTeam.find_or_create_by(
             name: "MyTeam#{i}",
