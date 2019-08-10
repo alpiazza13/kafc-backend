@@ -3,5 +3,5 @@ class League < ApplicationRecord
 
     belongs_to :manager, foreign_key: :manager_id, class_name: 'User'
 
-    # has_many :fantasy_teams
+    has_many :teams, class_name: 'FantasyTeam'
 end
