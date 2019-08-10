@@ -9,6 +9,11 @@ class Match < ApplicationRecord
     has_many :players, through: :player_stats
     has_many :stats, through: :player_stats
 
+
+
+
+
+
     def all_goals
         goal_id = Stat.find_by(stat_name: 'Goal').id
         PlayerStat.where("stat_id = ? and match_id = ?", goal_id, id)

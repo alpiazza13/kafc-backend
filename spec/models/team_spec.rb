@@ -7,6 +7,8 @@ RSpec.describe Team, type: :model do
         expect(Team.column_names.include?('color')).to be true
         expect(Team.column_names.include?('id')).to be true
         expect(Team.column_names.include?('type')).to be true
+        expect(Team.column_names.include?('league_id')).to be true
+
 
       end
     end
@@ -24,6 +26,13 @@ RSpec.describe Team, type: :model do
 
         new_team.type = 'RealTeam'
         expect(new_team.valid?).to be true
+
+        new_team.type = 'FantasyTeam'
+        expect(new_team.valid?).to be true
+
+        new_team.name = nil
+        expect(new_team.valid?).to be false
+
 
       end
     end

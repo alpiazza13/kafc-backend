@@ -9,4 +9,5 @@ end
 
 Fabricator(:fantasy_team, from: :team) do
   type 'FantasyTeam'
+  league_id 1
 end
