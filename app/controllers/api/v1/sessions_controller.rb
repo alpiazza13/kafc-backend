@@ -1,8 +1,7 @@
 class Api::V1::SessionsController < Devise::SessionsController
   def create
-    warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
-    current_user = User.find_by(email: user_params[:email].downcase)
-    return_logged_in_user(current_user)
+    user = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
+    return_logged_in_user(user)
   end
 
   def destroy
