@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_192317) do
+ActiveRecord::Schema.define(version: 2019_08_20_054320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,35 @@ ActiveRecord::Schema.define(version: 2019_08_10_192317) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "formations", force: :cascade do |t|
+    t.string "name"
+    t.integer "gks"
+    t.integer "defs"
+    t.integer "mids"
+    t.integer "fwds"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lineup_players", force: :cascade do |t|
+    t.integer "lineup_id"
+    t.integer "player_id"
+    t.integer "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lineups", force: :cascade do |t|
+    t.integer "formation_id"
+    t.integer "user_team_id"
+    t.integer "matchweek"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
