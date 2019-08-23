@@ -1,6 +1,9 @@
 class Formation < ApplicationRecord
     validates :name, presence: true
     # validate :name_dets
+
+    has_many :lineups
+
     validate :gk_acc
     validate :def_acc
     validate :mids_acc

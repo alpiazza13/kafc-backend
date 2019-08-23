@@ -1,7 +1,6 @@
 namespace :kafc do
     desc 'destroys development data'
     task destroy_dev_data: :environment do
-
         User.destroy_all
         Team.destroy_all
         Player.destroy_all
@@ -12,6 +11,8 @@ namespace :kafc do
         UserTeam.destroy_all
         League.destroy_all
         FantasyTeamPlayer.destroy_all
-
+        Formation.destroy_all
+        Lineup.destroy_all
+        LineupPlayer.destroy_all
     end
 end

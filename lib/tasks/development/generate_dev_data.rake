@@ -1,7 +1,7 @@
 namespace :kafc do
     desc 'generates development data'
     task generate_dev_data: :environment do
- 
+
         pos1 = Position.find_or_create_by(name: "GK")
         pos2 = Position.find_or_create_by(name: "DEF")
         pos3 = Position.find_or_create_by(name: "MID")
@@ -35,21 +35,50 @@ namespace :kafc do
             )
         end
 
+        20.times do |i|
+            Player.find_or_create_by(
+                first_name: "Kepa",
+                last_name: "Arrizabalaga#{i}",
+                age: 23,
+                team_id: RealTeam.all[i].id,
+                position_id: Position.all[0].id
+            )
+        end
+
+        60.times do |i|
+            Player.find_or_create_by(
+                first_name: "Antonio",
+                last_name: "Rudiger#{i}",
+                age: 25,
+                team_id: RealTeam.all[i % (RealTeam.count)].id,
+                position_id: Position.all[1].id
+            )
+        end
+
+        80.times do |i|
+            Player.find_or_create_by(
+                first_name: "Alvin",
+                last_name: "Bakayoko#{i}",
+                age: 25,
+                team_id: RealTeam.all[i % (RealTeam.count)].id,
+                position_id: Position.all[2].id
+            )
+        end
+
+        60.times do |i|
+            Player.find_or_create_by(
+                first_name: "Tammy",
+                last_name: "Abraham#{i}",
+                age: 21,
+                team_id: RealTeam.all[i % (RealTeam.count)].id,
+                position_id: Position.all[3].id
+            )
+        end
+
         wes = RealTeam.find_or_create_by(
             name: "Losers",
             color: "Red"
         )
-
-
-        20.times do |i|
-            Player.find_or_create_by(
-                first_name: "Alvin",
-                last_name: "Bakayoko#{i}000",
-                age: i+20,
-                team_id: RealTeam.all[i].id,
-                position_id: Position.all[2].id
-            )
-        end
 
 
         20.times do |i|
@@ -92,6 +121,44 @@ namespace :kafc do
             user_team_id: UserTeam.all[i].id
         )
     end
+
+    formations = ["343", "352", "433", "451", "442", "532"]
+    for formation in formations
+        Formation.find_or_create_by(
+            name: formation,
+            gks: 1,
+            defs: formation[0],
+            mids: formation[1],
+            fwds: formation[2]
+        )
+    end
+
+    20.times do |i| Lineup.find_or_create_by(
+        formation_id: Formation.first.id,
+        user_team_id: UserTeam.all[i].id,
+        matchweek: 1
+    )
+    end
+
+    teams = RealTeam.all
+    i = 0
+    while i < teams.size - 1
+        players = teams[i].players
+            for player in players
+                LineupPlayer.find_or_create_by(
+                    lineup_id: Lineup.all[i].id,
+                    player_id: player.id,
+                    position_id: player.position_id
+                )
+            end
+            i += 1
+        end
+
+
+
+
+
+
 
 #We have 20 fake matches, each ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
 # Each team only has one player (one of the Bakayoko's)
