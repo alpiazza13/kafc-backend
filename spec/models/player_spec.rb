@@ -21,12 +21,14 @@ RSpec.describe Player, type: :model do
 
           new_player.last_name = 'Borges'
           expect(new_player.valid?).to be true
+      end
 
-          # x = Fabricate(:fantasy_team)
-          # new_player.team = x
-          # expect(new_player.valid?).to be false
-
-
+      it 'requires the right type of team' do
+          new_player = Player.new
+          
+          x = Fabricate(:fantasy_team)
+          new_player.team = x
+          expect(new_player.valid?).to be false
       end
   end
 end

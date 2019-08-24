@@ -14,7 +14,8 @@ RSpec.describe Lineup, type: :model do
             l = Lineup.new
             expect(l.valid?).to be false
 
-            l.formation_id = 2
+            f = Fabricate(:formation)
+            l.formation = f
             expect(l.valid?).to be true
         end
     end

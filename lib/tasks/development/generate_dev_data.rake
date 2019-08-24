@@ -2,6 +2,9 @@ namespace :kafc do
     desc 'generates development data'
     task generate_dev_data: :environment do
 
+        Rake::Task["kafc:destroy_dev_data"].invoke
+
+        puts('Creating Positions...')
         pos1 = Position.find_or_create_by(name: "GK")
         pos2 = Position.find_or_create_by(name: "DEF")
         pos3 = Position.find_or_create_by(name: "MID")
@@ -9,6 +12,7 @@ namespace :kafc do
         pos5 = Position.find_or_create_by(name: "DEF/MID")
         pos6 = Position.find_or_create_by(name: "MID/FWD")
 
+        puts('Creating Stats...')
         stat = Stat.find_or_create_by(stat_name: 'Goal')
         stat.update_attribute(:points, 5)
 
@@ -21,6 +25,7 @@ namespace :kafc do
         stat3 = Stat.find_or_create_by(stat_name: 'Yellow Card')
         stat3.update_attribute(:points, -5)
 
+        puts('Creating Users...')
         20.times do |i|
             email = "test-email#{i}@test.com"
             user = User.find_by(email: email)
@@ -28,6 +33,7 @@ namespace :kafc do
             Fabricate(:user, email: email, first_name: 'Kurt', last_name: "Zouma#{i}000")
         end
 
+        puts('Creating RealTeams...')
         20.times do |i|
             RealTeam.find_or_create_by(
             name: "#{i}Chelsea#{i}",
@@ -35,6 +41,7 @@ namespace :kafc do
             )
         end
 
+        puts('Creating Players...')
         20.times do |i|
             Player.find_or_create_by(
                 first_name: "Kepa",
@@ -80,7 +87,7 @@ namespace :kafc do
             color: "Red"
         )
 
-
+        puts('Creating Matches...')
         20.times do |i|
             Match.find_or_create_by(
                 home_team_id: RealTeam.all.ids[i],
@@ -90,6 +97,7 @@ namespace :kafc do
             )
         end
 
+        puts('Creating PlayerStats...')
         20.times do |i| PlayerStat.find_or_create_by(
             player_id: Player.all.ids[i],
             stat_id: Stat.first.id,
@@ -97,31 +105,36 @@ namespace :kafc do
         )
         end
 
+        puts('Creating Leagues...')
         5.times do |i| League.find_or_create_by(
             name: "MyLeague#{i}",
             manager_id: User.all[i].id
         )
-    end
+        end
 
+        puts('Creating FantasyTeams...')
         20.times do |i| FantasyTeam.find_or_create_by(
             name: "MyTeam#{i}",
             color: "Why is this a category?",
             league_id: League.all[i % 5].id
         )
-    end
+        end
 
+        puts('Creating UserTeams...')
         20.times do |i| UserTeam.find_or_create_by(
             user_id: User.all[i].id,
             team_id: FantasyTeam.all[i].id
         )
-    end
+        end
 
+        puts('Assigning Players to FantasyTeams...')
         20.times do |i| FantasyTeamPlayer.find_or_create_by(
             player_id: Player.all[i].id,
             user_team_id: UserTeam.all[i].id
         )
-    end
+        end
 
+    puts('Creating Formations...')
     formations = ["343", "352", "433", "451", "442", "532"]
     for formation in formations
         Formation.find_or_create_by(
@@ -133,6 +146,7 @@ namespace :kafc do
         )
     end
 
+    puts('Creating Lineups...')
     20.times do |i| Lineup.find_or_create_by(
         formation_id: Formation.first.id,
         user_team_id: UserTeam.all[i].id,
@@ -140,6 +154,7 @@ namespace :kafc do
     )
     end
 
+    puts('Filling Lineups with Players...')
     teams = RealTeam.all
     i = 0
     while i < teams.size - 1
@@ -154,11 +169,7 @@ namespace :kafc do
             i += 1
         end
 
-
-
-
-
-
+     puts('DONE!!!!')
 
 #We have 20 fake matches, each ending 1-0 to chelsea (home team), with bakayoko scoring the lone goal in each.
 # Each team only has one player (one of the Bakayoko's)

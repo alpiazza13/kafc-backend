@@ -1,7 +1,7 @@
 Fabricator(:formation) do
   name "433"
-  gks   0
-  defs  1
-  mids  1
-  fwds  1
+  gks   1
+  defs  4
+  mids  3
+  fwds  3
 end

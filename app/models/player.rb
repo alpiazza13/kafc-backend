@@ -10,6 +10,7 @@ class Player < ApplicationRecord
     has_many :stats, through: :player_stats
 
     def validate_team_type
-      team.present? ? team.type == 'RealTeam' : true
+     valid = team.present? ? team.type == 'RealTeam' : true
+     errors.add(:team, 'Player must belong to a real team') unless valid
     end
 end
