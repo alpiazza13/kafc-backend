@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < Devise::SessionsController
   def create
-    user = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
-    return_logged_in_user(user)
+    user = warden.authenticate(scope: resource_name)
+    user.present? ? return_logged_in_user(user) : return_failed_login
   end
 
   def destroy
@@ -17,6 +17,15 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def return_failed_login
+    render status: 401,
+           json: {
+             success: false,
+             info: 'Login Failed',
+             user: { }
+           }
   end
 
   def return_logged_in_user(user)
