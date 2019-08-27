@@ -1,7 +1,8 @@
 class Api::V1::SessionsController < Devise::SessionsController
   def create
-    user = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
-    return_logged_in_user(user)
+    self.resource = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
+    sign_in(resource_name, resource)
+    return_logged_in_user(resource)
   end
 
   def destroy
