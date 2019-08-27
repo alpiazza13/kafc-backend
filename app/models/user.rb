@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable, :lockable,
-         :timeoutable, :trackable, :jwt_authenticatable, jwt_revocation_strategy: self
+         :timeoutable, :trackable, :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
 
   validates :email, presence: true
 
