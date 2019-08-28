@@ -4,6 +4,9 @@ class ApplicationController < ActionController::API
   before_action :authenticate_request
 
   def authenticate_request
-    true
+    return true if Rails.env.test?
+    
+    user = warden.authenticate(scope: :user)
+    render status: 401, json: { message: 'unauthorized' } unless user.present?
   end
 end
