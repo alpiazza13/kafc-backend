@@ -7,7 +7,7 @@ ruby '2.4.5'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 
 #rack
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors', '~> 1.0.5'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
